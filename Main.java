@@ -1,9 +1,10 @@
 /*
 Omar Garcia
-Reproductor de musica 1.0
+Reproductor de musica 1.1
 -Menu de usuario para poder llamar a todos los metodos
 -Se agregan multiples casos de acuerdo a los metodos establecidos en Reproductor
 -Huele a limon
+-Se ha simplificado el menu
 * */
 package ReproductorDeMusica;
 
@@ -31,12 +32,12 @@ public class Main {
             String argumento = partes.length > 1 ? partes[1].trim() : "";
         // Comandos del reproductor, solo papa dios y yo con dos horas de sueño saben como funciona
             switch (comando) {
-                case "add":
+                case "añadir":
                     if (!argumento.isEmpty()) reproductor.add(argumento);
                     else System.out.println("Uso: add <Artista - Título>");
                     break;
 
-                case "insert":
+                case "insertar":
                     String[] datosInsert = argumento.split(" ", 2);
                     if (datosInsert.length == 2) {
                         try {
@@ -50,7 +51,7 @@ public class Main {
                     }
                     break;
 
-                case "remove":
+                case "eliminar":
                     try {
                         int pos = Integer.parseInt(argumento);
                         reproductor.remove(pos);
@@ -59,7 +60,7 @@ public class Main {
                     }
                     break;
 
-                case "play":
+                case "reproducir":
                     try {
                         int pos = Integer.parseInt(argumento);
                         reproductor.play(pos);
@@ -68,40 +69,40 @@ public class Main {
                     }
                     break;
 
-                case "next":
+                case "siguiente":
                     reproductor.next();
                     break;
 
-                case "prev":
+                case "anterior":
                     reproductor.prev();
                     break;
 
-                case "queue":
+                case "cola":
                     if (!argumento.isEmpty()) reproductor.queue(argumento);
                     else System.out.println("Uso: queue <Artista - Título>");
                     break;
 
-                case "back":
+                case "regresar":
                     reproductor.back();
                     break;
 
-                case "list":
-                    if (argumento.equalsIgnoreCase("reverse")) {
+                case "lista":
+                    if (argumento.equalsIgnoreCase("reversa")) {
                         reproductor.listReverse();
                     } else {
                         reproductor.list();
                     }
                     break;
 
-                case "now":
+                case "historial":
                     reproductor.now();
                     break;
 
-                case "help":
+                case "ayuda":
                     mostrarHelp();
                     break;
 
-                case "exit":
+                case "salir":
                     ejecuntando = false;
                     System.out.println("Saliendo del reproductor...");
                     break;
@@ -116,16 +117,16 @@ public class Main {
 
     private static void mostrarHelp() {
         System.out.println("\n--- COMANDOS DISPONIBLES ---");
-        System.out.println("add              : agrega una cancino al final de la playlist");
-        System.out.println("insert       : inserta en una posición especifica");
-        System.out.println("remove                 : elimina de la playlist");
-        System.out.println("play                   : empieza a sonar en esa posición");
-        System.out.println("next / prev                 : avanza o retrocede en la playlist");
-        System.out.println("queue             : encola para sonar a continuación");
-        System.out.println("back                        : regresa a la canción anterior del historial");
-        System.out.println("list                        : imprime la playlist marcando la actual");
-        System.out.println("list reverse                : imprime la playlist en orden inverso (recursivo)");
-        System.out.println("now                         : imprime estado (sonando, cola e historial)");
-        System.out.println("help / exit                 : ayuda / salir");
+        System.out.println("añadir -> ");
+        System.out.println("insertar ->");
+        System.out.println("eliminar ->");
+        System.out.println("reproducir ->");
+        System.out.println("siguiente / anterior ->");
+        System.out.println("cola ->");
+        System.out.println("regresar ->");
+        System.out.println("lista ->");
+        System.out.println("lista reversa ->");
+        System.out.println("historial ->");
+        System.out.println("ayuda / salir ->");
     }
 }
